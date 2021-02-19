@@ -54,7 +54,6 @@ export default function LoginPage() {
 						setErrorMessage(error.message);
 						setIsLoading(false);
 					});
-			ss;
 		}
 	};
 
