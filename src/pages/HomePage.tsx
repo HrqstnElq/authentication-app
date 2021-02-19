@@ -1,7 +1,17 @@
+import AuthProvider, {useAuth} from "../contexts/AuthContext";
+
+// consumer
+const Todos = () => {
+	const {currentUser, signUp} = useAuth();
+	console.log(currentUser);
+
+	return <div></div>;
+};
+
 export default function HomePage() {
 	return (
-		<div>
-			<h1>Home page</h1>
-		</div>
+		<AuthProvider>
+			<Todos />
+		</AuthProvider>
 	);
 }

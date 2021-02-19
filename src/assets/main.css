@@ -19,28 +19,20 @@ input:focus {
 	@apply px-4 py-2 rounded-md cursor-pointer font-medium hover:text-gray-100 transition-colors duration-200;
 }
 
+.btn-circle {
+	@apply w-10 h-10 rounded-full cursor-pointer font-medium text-gray-500;
+}
+
 .btn + .btn {
 	@apply ml-4;
 }
 
+.btn-circle + .btn-circle {
+	@apply ml-2;
+}
+
 .btn--block {
 	@apply w-full;
-}
-
-.btn--blue {
-	@apply bg-blue-400 hover:bg-blue-600;
-}
-
-.btn--cyan {
-	@apply bg-cyan-400 hover:bg-cyan-600;
-}
-
-.btn--rose {
-	@apply bg-rose-400 hover:bg-rose-600;
-}
-
-.btn--gray {
-	@apply bg-gray-400 hover:bg-gray-600;
 }
 
 .input {
