@@ -1,0 +1,61 @@
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+button:focus,
+input:focus {
+	@apply outline-none;
+}
+
+.btn {
+	@apply px-4 py-2 rounded-md cursor-pointer font-medium hover:text-gray-100 transition-colors duration-200;
+}
+
+.btn + .btn {
+	@apply ml-4;
+}
+
+.btn--block {
+	@apply w-full;
+}
+
+.btn--blue {
+	@apply bg-blue-400 hover:bg-blue-600;
+}
+
+.btn--cyan {
+	@apply bg-cyan-400 hover:bg-cyan-600;
+}
+
+.btn--rose {
+	@apply bg-rose-400 hover:bg-rose-600;
+}
+
+.btn--gray {
+	@apply bg-gray-400 hover:bg-gray-600;
+}
+
+.input {
+	@apply border py-1 px-2 rounded-md bg-gray-50 
+	focus:bg-white focus-within:border-blue-400;
+}
+
+.input--block {
+	@apply w-full;
+}
+
+.input--error {
+	@apply border-rose-500 focus-within:border-rose-500;
+}
+
+.form-control + .form-control {
+	@apply mt-4;
+}
