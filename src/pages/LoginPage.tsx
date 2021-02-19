@@ -30,6 +30,8 @@ export default function LoginPage() {
 	const [errMessage, setErrorMessage] = useState<string>("");
 
 	const onSubmit = (data: Input) => {
+		setIsLoading(true);
+
 		if (data.isSignUp) {
 			signUp &&
 				signUp(data.email, data.password)
