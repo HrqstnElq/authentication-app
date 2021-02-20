@@ -5,13 +5,13 @@ import firebase from "firebase";
 type signFunctionType = (email: string, password: string) => Promise<firebase.auth.UserCredential>;
 
 export type AuthContextType = {
-	currentUser: any;
+	currentUser: firebase.User | null;
 	signUp: signFunctionType | null;
 	signIn: signFunctionType | null;
 };
 
 const authContextDefaultValue: AuthContextType = {
-	currentUser: "user",
+	currentUser: null,
 	signUp: null,
 	signIn: null,
 };

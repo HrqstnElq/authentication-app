@@ -16,7 +16,7 @@ input:focus {
 }
 
 .btn {
-	@apply px-4 py-2 rounded-md cursor-pointer font-medium hover:text-gray-100 transition-colors duration-200;
+	@apply px-4 py-2 rounded-md cursor-pointer font-medium transition-colors duration-200;
 }
 
 .btn-circle {
@@ -50,4 +50,31 @@ input:focus {
 
 .form-control + .form-control {
 	@apply mt-4;
+}
+
+.nav_avatar {
+	@apply w-10 h-10 cursor-pointer object-cover absolute pointer-events-none;
+}
+
+.nav__logout {
+	display: none;
+}
+
+.nav__logout:hover {
+	display: block;
+}
+
+.profile-form__body {
+	width: 80%;
+	min-width: 25rem;
+
+	@apply border-2 rounded-xl border-gray-300;
+}
+
+.profile-form__control {
+	@apply flex justify-between space-x-4 px-10 py-5;
+}
+
+.profile-form__control + .profile-form__control {
+	@apply border-t-2;
 }

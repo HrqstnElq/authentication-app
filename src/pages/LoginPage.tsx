@@ -36,7 +36,6 @@ export default function LoginPage() {
 			signUp &&
 				signUp(data.email, data.password)
 					.then((res) => {
-						console.log(res);
 						window.localStorage.setItem("user", JSON.stringify(res.user));
 						window.location.href = "/";
 					})
@@ -48,7 +47,6 @@ export default function LoginPage() {
 			signIn &&
 				signIn(data.email, data.password)
 					.then((res) => {
-						console.log(res);
 						window.localStorage.setItem("user", JSON.stringify(res.user));
 						window.location.href = "/";
 					})
@@ -88,7 +86,7 @@ export default function LoginPage() {
 							{errors.email && <span className="text-sm text-rose-500">Please enter your email address</span>}
 							<div className={classnames("input input--block ", {"input--error": errors.email})}>
 								<i className="fas fa-envelope text-gray-400 mr-2"></i>
-								<input type="email" name="email" ref={register({required: true})} placeholder="Email" />
+								<input className="w-5/6" type="email" name="email" ref={register({required: true})} placeholder="Email" />
 							</div>
 						</div>
 
@@ -98,6 +96,7 @@ export default function LoginPage() {
 							<div className={classnames("input input--block ", {"input--error": errors.password})}>
 								<i className="fas fa-key text-gray-400 mr-2"></i>
 								<input
+									className="w-5/6"
 									type="text"
 									name="password"
 									ref={register({
@@ -123,7 +122,7 @@ export default function LoginPage() {
 						<button className="btn btn--block form-control bg-rose-400 hover:bg-rose-500 text-gray-100">Start coding now</button>
 
 						{errMessage && (
-							<div className="my-4 p-4 border border-rose-500 rounded-md">
+							<div className="my-4 p-4 border border-rose-500 bg-rose-100 rounded-md">
 								<p className="text-center text-rose-500">{errMessage}</p>
 							</div>
 						)}

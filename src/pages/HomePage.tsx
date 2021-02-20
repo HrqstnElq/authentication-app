@@ -1,17 +1,27 @@
+import NavBar from "../components/NavBar";
+import ProfileForm from "../components/ProfileForm";
 import AuthProvider, {useAuth} from "../contexts/AuthContext";
 
 // consumer
-const Todos = () => {
-	const {currentUser, signUp} = useAuth();
-	console.log(currentUser);
+const Profile = () => {
+	const {currentUser} = useAuth();
 
-	return <div></div>;
+	return (
+		<div className="w-5/6 m-auto">
+			{currentUser && (
+				<>
+					<NavBar user={currentUser} />
+					<ProfileForm user={currentUser} />
+				</>
+			)}
+		</div>
+	);
 };
 
 export default function HomePage() {
 	return (
 		<AuthProvider>
-			<Todos />
+			<Profile />
 		</AuthProvider>
 	);
 }
