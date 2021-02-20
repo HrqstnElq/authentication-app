@@ -5,11 +5,12 @@ import {useLoading, Circles} from "@agney/react-loading";
 
 import Logo from "../assets/images/devchallenges.svg";
 import GoogleIcon from "../assets/images/Google.svg";
-import FacebookIcon from "../assets/images/Facebook.svg";
-import TwitterIcon from "../assets/images/Twitter.svg";
+// import FacebookIcon from "../assets/images/Facebook.svg";
+// import TwitterIcon from "../assets/images/Twitter.svg";
 import GithubIcon from "../assets/images/Github.svg";
 import {useAuth} from "../contexts/AuthContext";
 import {useState} from "react";
+import Footer from "../components/Footer";
 
 type Input = {
 	email: string;
@@ -84,7 +85,7 @@ export default function LoginPage() {
 					<div className="form__body">
 						<div className="form-control">
 							{errors.email && <span className="text-sm text-rose-500">Please enter your email address</span>}
-							<div className={classnames("input input--block ", {"input--error": errors.email})}>
+							<div className={classnames("input block ", {"input--error": errors.email})}>
 								<i className="fas fa-envelope text-gray-400 mr-2"></i>
 								<input className="w-5/6" type="email" name="email" ref={register({required: true})} placeholder="Email" />
 							</div>
@@ -93,7 +94,7 @@ export default function LoginPage() {
 						<div className="form-control">
 							{errors.password && <span className="text-sm text-rose-500">{errors.password.message}</span>}
 
-							<div className={classnames("input input--block ", {"input--error": errors.password})}>
+							<div className={classnames("input block ", {"input--error": errors.password})}>
 								<i className="fas fa-key text-gray-400 mr-2"></i>
 								<input
 									className="w-5/6"
@@ -141,19 +142,7 @@ export default function LoginPage() {
 					</div>
 				</form>
 
-				<div className="flex justify-between">
-					<span className="text-sm text-gray-500">
-						created by{" "}
-						<a href="https://github.com/HrqstnElq" target="_blank" className="font-medium">
-							@shin
-						</a>
-					</span>
-					<span className="text-sm text-gray-500">
-						<a href="https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx" target="_blank">
-							devChallenges.io
-						</a>
-					</span>
-				</div>
+				<Footer />
 			</div>
 		</div>
 	);

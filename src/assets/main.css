@@ -10,8 +10,21 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
 button:focus,
-input:focus {
+input:focus,
+textarea:focus {
 	@apply outline-none;
 }
 
@@ -36,11 +49,11 @@ input:focus {
 }
 
 .input {
-	@apply border py-1 px-2 rounded-md bg-gray-50 
+	@apply border p-2 rounded-md bg-gray-50 
 	focus:bg-white focus-within:border-blue-400;
 }
 
-.input--block {
+.block {
 	@apply w-full;
 }
 
@@ -64,10 +77,14 @@ input:focus {
 	display: block;
 }
 
-.profile-form__body {
+.profile-form__header,
+.profile-form__body,
+.profile-form__footer {
 	width: 80%;
 	min-width: 25rem;
+}
 
+.profile-form__body {
 	@apply border-2 rounded-xl border-gray-300;
 }
 

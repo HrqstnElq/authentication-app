@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import {Link} from "react-router-dom";
 
 const defaultPhotoUrl = "https://i.pinimg.com/564x/98/7f/d7/987fd7fd0462bab17aa86d411611daf1.jpg";
 export default function ProfileForm(props: {user: firebase.User}) {
@@ -18,7 +19,9 @@ export default function ProfileForm(props: {user: firebase.User}) {
 						<p className="text-sm">Some info may be visible to other people</p>
 					</div>
 					<div>
-						<button className="btn border hover:bg-gray-100">Edit</button>
+						<Link to="/edit" className="btn cursor-pointer border hover:bg-gray-100">
+							Edit
+						</Link>
 					</div>
 				</div>
 
@@ -43,7 +46,28 @@ export default function ProfileForm(props: {user: firebase.User}) {
 				<div className="profile-form__control">
 					<span className="w-1/6 font-semibold">Bio</span>
 					<div className="w-5/6">
-						<p>{user.displayName}</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					</div>
+				</div>
+
+				<div className="profile-form__control">
+					<span className="w-1/6 font-semibold">Phone</span>
+					<div className="w-5/6">
+						<p>{user?.phoneNumber || ""}</p>
+					</div>
+				</div>
+
+				<div className="profile-form__control">
+					<span className="w-1/6 font-semibold">Email</span>
+					<div className="w-5/6">
+						<p>{user?.email || ""}</p>
+					</div>
+				</div>
+
+				<div className="profile-form__control">
+					<span className="w-1/6 font-semibold">Password</span>
+					<div className="w-5/6">
+						<p>*********</p>
 					</div>
 				</div>
 			</div>

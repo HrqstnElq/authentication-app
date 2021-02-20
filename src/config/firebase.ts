@@ -1,5 +1,8 @@
 import firebase from "firebase/app";
+import {ProfileType} from "./../types/ObjectType";
+
 import "firebase/auth";
+import "firebase/storage";
 
 const app = firebase.initializeApp({
 	apiKey: import.meta.env.VITE_APP_API_KEY,
@@ -23,4 +26,29 @@ export const signInWithGoogle = () => {
 
 export const signInWithGithub = () => {
 	return auth.signInWithPopup(githubProvider);
+};
+
+export const updateProfileFirebase = (data: ProfileType): Promise<void> => {
+	const user = firebase.auth().currentUser;
+	const storageRef = firebase.storage().ref(user?.uid.toString());
+
+	return new Promise<void>(async (resolve, reject) => {
+		try {
+			const url = data.avatar[0] ? await storageRef.put(data.avatar[0]).snapshot.ref.getDownloadURL() : null;
+
+			await user?.updateProfile({
+				photoURL: url || user.photoURL,
+				displayName: data.name || user.displayName,
+			});
+
+			if (data.password) {
+				await user?.updatePassword(data.password);
+			}
+
+			resolve();
+		} catch (error) {
+			console.log(error);
+			reject(error);
+		}
+	});
 };

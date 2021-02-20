@@ -9,9 +9,9 @@ export default function NavBar(props: {user: firebase.User}) {
 
 	return (
 		<nav className="flex justify-between items-center h-12">
-			<div className="nav__logo">
+			<a href="https://devchallenges.io" target="_blank" className="nav__logo">
 				<img className="h-6" src={logo} alt="devchallenges" />
-			</div>
+			</a>
 			<div className="flex items-center space-x-2">
 				<label className="w-10 h-10 relative  overflow-hidden rounded-lg" onClick={() => signOut()}>
 					<img className="nav_avatar" src={user.photoURL || defaultPhotoUrl} alt="" />
