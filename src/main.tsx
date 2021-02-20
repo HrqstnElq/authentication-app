@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "windi.css";
 import "./assets/main.css";
+import AuthProvider from "./contexts/AuthContext";
 
 ReactDOM.render(
 	<StrictMode>
-		<App />
+		<AuthProvider>
+			<App />
+		</AuthProvider>
 	</StrictMode>,
 	document.getElementById("root")
 );

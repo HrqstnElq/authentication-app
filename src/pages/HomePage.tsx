@@ -1,9 +1,8 @@
 import NavBar from "../components/NavBar";
 import ProfileForm from "../components/ProfileForm";
-import AuthProvider, {useAuth} from "../contexts/AuthContext";
+import {useAuth} from "../contexts/AuthContext";
 
-// consumer
-const Profile = () => {
+export default function HomePage() {
 	const {currentUser} = useAuth();
 
 	return (
@@ -15,13 +14,5 @@ const Profile = () => {
 				</>
 			)}
 		</div>
-	);
-};
-
-export default function HomePage() {
-	return (
-		<AuthProvider>
-			<Profile />
-		</AuthProvider>
 	);
 }
