@@ -1,4 +1,4 @@
-import { PopUpSignFunctionType } from "../types/FunctionType";
+import {PopUpSignFunctionType} from "../types/FunctionType";
 
 interface Props {
 	icon: any;
