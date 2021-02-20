@@ -16,6 +16,13 @@ export default function EditPage() {
 		loading: isLoading,
 		indicator: <Puff />,
 	});
+	const [avatar, setAvatar] = useState<any>(currentUser?.photoURL || defaultPhotoUrl);
+
+	const reader = new FileReader();
+	reader.onload = () => setAvatar(reader.result);
+	const imageSelectHandler = (event: any) => {
+		if (event.target.files[0]) reader.readAsDataURL(event.target.files[0]);
+	};
 
 	const onSubmit = (data: ProfileType) => {
 		setIsLoading(true);
@@ -58,7 +65,26 @@ export default function EditPage() {
 
 				<form onSubmit={handleSubmit(onSubmit)} className="px-10 py-5" autoComplete="off">
 					<div className="form-control">
-						<input type="file" name="avatar" accept="image/*" ref={register} />
+						<label
+							className="relative block object-cover rounded-lg select-none bg-red-400 cursor-pointer"
+							htmlFor="avatar"
+							style={{width: "5rem", height: "5rem"}}>
+							<input
+								className="hidden"
+								type="file"
+								id="avatar"
+								name="avatar"
+								accept="image/*"
+								ref={register}
+								onChange={imageSelectHandler}
+							/>
+
+							<img className="w-20 h-20 absolute object-cover object-top pointer-events-none rounded-lg" src={avatar} />
+
+							<div className="w-20 h-20 bg-black bg-opacity-20 absolute rounded-lg top-0 flex justify-center items-center ">
+								<i className="fa fa-camera text-white text-xl"></i>
+							</div>
+						</label>
 					</div>
 
 					<div className="form-control block">
