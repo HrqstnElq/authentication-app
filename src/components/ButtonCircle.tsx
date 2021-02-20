@@ -1,8 +1,8 @@
-import {popUpSignFunctionType} from "../contexts/AuthContext";
+import { PopUpSignFunctionType } from "../types/FunctionType";
 
 interface Props {
 	icon: any;
-	signIn: popUpSignFunctionType;
+	signIn: PopUpSignFunctionType;
 	setErrorMessage: Function;
 }
 
