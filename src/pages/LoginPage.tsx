@@ -19,7 +19,7 @@ type Input = {
 
 export default function LoginPage() {
 	const {register, handleSubmit, errors} = useForm<Input>();
-	const {signIn, signUp} = useAuth();
+	const {signIn, signUp, continueWithGoogle, continueWithGithub} = useAuth();
 
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const {containerProps, indicatorEl} = useLoading({
@@ -132,10 +132,11 @@ export default function LoginPage() {
 						</div>
 
 						<div className="flex justify-center my-4">
-							<ButtonCircle icon={GoogleIcon} />
-							<ButtonCircle icon={FacebookIcon} />
+							{continueWithGoogle && <ButtonCircle icon={GoogleIcon} signIn={continueWithGoogle} setErrorMessage={setErrorMessage} />}
+							{continueWithGithub && <ButtonCircle icon={GithubIcon} signIn={continueWithGithub} setErrorMessage={setErrorMessage} />}
+							{/* <ButtonCircle icon={FacebookIcon} />
 							<ButtonCircle icon={TwitterIcon} />
-							<ButtonCircle icon={GithubIcon} />
+							<ButtonCircle icon={GithubIcon} /> */}
 						</div>
 					</div>
 				</form>

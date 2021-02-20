@@ -1,19 +1,26 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import {auth} from "../config/firebase";
+import {auth, signInWithGithub, signInWithGoogle} from "../config/firebase";
 import firebase from "firebase";
 
-type signFunctionType = (email: string, password: string) => Promise<firebase.auth.UserCredential>;
+export type signFunctionType = (email: string, password: string) => Promise<firebase.auth.UserCredential>;
+export type popUpSignFunctionType = () => Promise<firebase.auth.UserCredential>;
 
 export type AuthContextType = {
 	currentUser: firebase.User | null;
 	signUp: signFunctionType | null;
 	signIn: signFunctionType | null;
+	continueWithGoogle: popUpSignFunctionType | null;
+	continueWithGithub: popUpSignFunctionType | null;
+	signOut: Function;
 };
 
 const authContextDefaultValue: AuthContextType = {
 	currentUser: null,
 	signUp: null,
 	signIn: null,
+	signOut: () => {},
+	continueWithGoogle: null,
+	continueWithGithub: null,
 };
 
 const AuthContext = createContext<AuthContextType>(authContextDefaultValue);
@@ -34,6 +41,18 @@ const AuthProvider: React.FC = ({children}) => {
 		return auth.signInWithEmailAndPassword(email, password);
 	};
 
+	const continueWithGoogle = async (): Promise<firebase.auth.UserCredential> => {
+		return signInWithGoogle();
+	};
+
+	const continueWithGithub = async (): Promise<firebase.auth.UserCredential> => {
+		return signInWithGithub();
+	};
+
+	const signOut = async () => {
+		return await auth.signOut();
+	};
+
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((user) => {
 			setCurrentUser(user);
@@ -48,6 +67,9 @@ const AuthProvider: React.FC = ({children}) => {
 				currentUser,
 				signUp,
 				signIn,
+				continueWithGoogle,
+				continueWithGithub,
+				signOut,
 			}}>
 			{children}
 		</AuthContext.Provider>

@@ -13,3 +13,14 @@ const app = firebase.initializeApp({
 
 export const auth = app.auth();
 export default app;
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+const githubProvider = new firebase.auth.GithubAuthProvider();
+
+export const signInWithGoogle = () => {
+	return auth.signInWithPopup(googleProvider);
+};
+
+export const signInWithGithub = () => {
+	return auth.signInWithPopup(githubProvider);
+};
