@@ -3,6 +3,7 @@ import {ProfileType} from "./../types/ObjectType";
 
 import "firebase/auth";
 import "firebase/storage";
+import "firebase/firestore";
 
 const app = firebase.initializeApp({
 	apiKey: import.meta.env.VITE_APP_API_KEY,
@@ -15,6 +16,8 @@ const app = firebase.initializeApp({
 });
 
 export const auth = app.auth();
+export const userCollection = firebase.firestore().collection("users");
+
 export default app;
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -44,6 +47,11 @@ export const updateProfileFirebase = (data: ProfileType): Promise<void> => {
 			if (data.password) {
 				await user?.updatePassword(data.password);
 			}
+
+			await userCollection.doc(user?.uid).set({
+				phone: data.phone,
+				bio: data.bio,
+			});
 
 			resolve();
 		} catch (error) {

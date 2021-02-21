@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import {auth, signInWithGithub, signInWithGoogle, updateProfileFirebase} from "../config/firebase";
+import {auth, userCollection, signInWithGithub, signInWithGoogle, updateProfileFirebase} from "../config/firebase";
 import firebase from "firebase";
 import {AuthContextType, ProfileType} from "../types/ObjectType";
 
@@ -48,11 +48,18 @@ const AuthProvider: React.FC = ({children}) => {
 	};
 
 	useEffect(() => {
-		const unsubscribe = auth.onAuthStateChanged((user) => {
-			setCurrentUser(user);
-
-			return unsubscribe;
+		const unsubscribe = auth.onAuthStateChanged(async (user) => {
+			try {
+				const data = (await userCollection.doc(user?.uid || "test").get()).data();
+				setCurrentUser({
+					...user,
+					...data,
+				});
+			} catch {
+				setCurrentUser(user);
+			}
 		});
+		return unsubscribe;
 	}, []);
 
 	return (

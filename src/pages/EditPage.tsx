@@ -16,6 +16,7 @@ export default function EditPage() {
 		loading: isLoading,
 		indicator: <Puff />,
 	});
+
 	const [avatar, setAvatar] = useState<any>(currentUser?.photoURL || defaultPhotoUrl);
 
 	const reader = new FileReader();
@@ -111,14 +112,20 @@ export default function EditPage() {
 						<label className="font-medium" htmlFor="bio">
 							Bio
 						</label>
-						<textarea className="input block" id="bio" name="bio" placeholder="Enter your bio..." ref={register}></textarea>
+						<textarea
+							className="input block"
+							id="bio"
+							name="bio"
+							placeholder="Enter your bio..."
+							ref={register}
+							defaultValue={currentUser?.bio}></textarea>
 					</div>
 
 					<div className="form-control block">
 						<label className="font-medium" htmlFor="phone">
 							Phone
 						</label>
-						<input className="input block" type="number" id="phone" name="phone" ref={register} />
+						<input className="input block" type="number" id="phone" name="phone" ref={register} defaultValue={currentUser?.phone} />
 					</div>
 
 					<div className="form-control block">
@@ -157,6 +164,9 @@ export default function EditPage() {
 					</div>
 
 					<button className="form-control btn border border-blue-400 text-blue-400 hover:bg-blue-100">Save</button>
+					<button className="form-control btn border border-red-400 text-red-400 hover:bg-red-100" type="reset">
+						Reset
+					</button>
 				</form>
 			</div>
 		</div>

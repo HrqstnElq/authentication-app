@@ -9,8 +9,6 @@ import Footer from "../components/Footer";
 export default function HomePage() {
 	const {currentUser} = useAuth();
 
-	const db = firebase.database;
-
 	return (
 		<div className="w-5/6 m-auto">
 			{currentUser && (

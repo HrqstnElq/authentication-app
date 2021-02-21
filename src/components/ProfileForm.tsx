@@ -1,8 +1,8 @@
-import firebase from "firebase";
 import {Link} from "react-router-dom";
+import {MyUser} from "../types/ObjectType";
 
 const defaultPhotoUrl = "https://i.pinimg.com/564x/98/7f/d7/987fd7fd0462bab17aa86d411611daf1.jpg";
-export default function ProfileForm(props: {user: firebase.User}) {
+export default function ProfileForm(props: {user: MyUser}) {
 	const {user} = props;
 
 	return (
@@ -46,21 +46,21 @@ export default function ProfileForm(props: {user: firebase.User}) {
 				<div className="profile-form__control">
 					<span className="w-1/6 font-semibold">Bio</span>
 					<div className="w-5/6">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+						<p>{user?.bio}</p>
 					</div>
 				</div>
 
 				<div className="profile-form__control">
 					<span className="w-1/6 font-semibold">Phone</span>
 					<div className="w-5/6">
-						<p>{user?.phoneNumber || ""}</p>
+						<p>{user?.phone}</p>
 					</div>
 				</div>
 
 				<div className="profile-form__control">
 					<span className="w-1/6 font-semibold">Email</span>
 					<div className="w-5/6">
-						<p>{user?.email || ""}</p>
+						<p>{user?.email}</p>
 					</div>
 				</div>
 

@@ -9,8 +9,13 @@ export type ProfileType = {
 	avatar: FileList;
 };
 
+export type MyUser = firebase.User & {
+	bio: string;
+	phone: string;
+};
+
 export type AuthContextType = {
-	currentUser: firebase.User | null;
+	currentUser: MyUser | null;
 	signUp: SignFunctionType | null;
 	signIn: SignFunctionType | null;
 	continueWithGoogle: PopUpSignFunctionType | null;
