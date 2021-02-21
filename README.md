@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://authentication-app-omega.vercel.app/login">
+    <a href="https://authentication-app-omega.vercel.app">
       Demo
     </a>
     <span> | </span>
