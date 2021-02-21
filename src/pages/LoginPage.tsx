@@ -128,8 +128,12 @@ export default function LoginPage() {
 							</div>
 						)}
 
+						<div className="flex justify-center form-control">
+							<span className="text-xs text-blue-400 cursor-pointer">Reset password</span>
+						</div>
+
 						<div className="form-control flex justify-center">
-							<span className="text-xs text-gray-400">or continue with these social profile</span>
+							<span className="text-sm text-gray-400">or continue with these social profile</span>
 						</div>
 
 						<div className="flex justify-center my-4">

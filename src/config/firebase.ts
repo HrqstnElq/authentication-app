@@ -60,3 +60,7 @@ export const updateProfileFirebase = (data: ProfileType): Promise<void> => {
 		}
 	});
 };
+
+export const resetPassword = async () => {
+	auth.sendPasswordResetEmail;
+};
