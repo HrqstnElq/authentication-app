@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/HrqstnElq/authentication-app">
+    <a href="https://github.com/VTV24/authentication-app">
       Solution
     </a>
     <span> | </span>
@@ -83,4 +83,4 @@ $ yarn run dev
 
 ## Contact
 
-- GitHub [@HrqstnElq](https://github.com/HrqstnElq/)
+- GitHub [@HrqstnElq](https://github.com/VTV24/)
